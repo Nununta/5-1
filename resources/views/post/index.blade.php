@@ -31,11 +31,18 @@
                     <table class="table table-dark">
                         <tbody>
                             @foreach($posts as $post)
-                                <tr>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $post->id }}</h5>
+                                    <p></p>
+                                </div>
+                                
+                                
+                                
+                                <!-- <tr>
                                 <td>{{ $post->id }}</td>
                                 <td>{{ str_limit($post->body, 255) }}</td>
                                 <td>{{ $post->created_at }}</td>
-                                </tr>
+                                </tr> -->
                             @endforeach
                         </tbody>
                     </table>
@@ -43,3 +50,4 @@
             </div>
         </div>
     </div>
+@endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Auth;
 
 class PostController extends Controller
 {
@@ -15,9 +16,10 @@ class PostController extends Controller
 
     public function create(Request $request)
     {
-            // Varidationを行う
+    // Varidationを行う
     $this->validate($request, Post::$rules);
     $post = new Post;
+    $post -> user_id = Auth::id();
     $form = $request->all();
 
     // フォームから送信されてきた_tokenを削除する
