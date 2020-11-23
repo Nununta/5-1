@@ -1,12 +1,12 @@
 @extends('layouts.layout')
-@section('title', '予定の編集')
+@section('title', 'つぶやきの編集')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>予定編集</h2>
-                <form action="{{ action('Admin\PostController@update') }}" method="post" enctype="multipart/form-data">
+                <h2>つぶやき編集</h2>
+                <form action="{{ route('post.update') }}" method="post" enctype="multipart/form-data">
                     @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)
@@ -17,12 +17,13 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="post">本文</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="body" value="{{ $todo_form->body }}">
+                            <input type="text" class="form-control" name="body" value="{{ $posts->body }}">
                         </div>
                     </div>
 
-                    <input type="hidden" name="id" value="{{ $todo_form->id }}">
+                    <input type="hidden" name="id" value="{{ $posts->id }}">
                     {{ csrf_field() }}
+                    {{ method_field('PATCH') }}
                     <input type="submit" class="update-btn" value="更新">
                 </form>
             </div>

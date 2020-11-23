@@ -13,9 +13,8 @@
             <div class="col-md-8">
                 <form action="{{ action('Admin\PostController@index') }}" method="get">
                     <div class="form-group row">
-                        <label class="col-md-2">本文</label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" name="cond_title" value="{{ $cond_title }}">
+                        <div class="col-md-10">
+                            <input type="text" placeholder="つぶやきを検索して下さい" class="form-control" name="cond_title" value="{{ $cond_title }}">
                         </div>
                         <div class="col-md-2">
                             {{ csrf_field() }}
@@ -25,29 +24,27 @@
                 </form>
             </div>
         </div>
-        <div class="row">
-            <div class="list-news col-md-12 mx-auto">
-                <div class="row">
-                    <table class="table table-dark">
-                        <tbody>
-                            @foreach($posts as $post)
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $post->id }}</h5>
-                                    <p></p>
-                                </div>
-                                
-                                
-                                
-                                <!-- <tr>
-                                <td>{{ $post->id }}</td>
-                                <td>{{ str_limit($post->body, 255) }}</td>
-                                <td>{{ $post->created_at }}</td>
-                                </tr> -->
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+        <div class="card text-center">
+            <div class="card-header">
+                
             </div>
+            @foreach($posts as $post)
+                <div class="card card-body bg-light p-5">
+                    <h5 class="card-title">ユーザ名</h5>
+                    <h5 class="carg-title">{{ $post->created_at }}</h5>
+                    <p class="card-text">{{ $post->body }}</p>
+                    <div>
+                    <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary">編集</a>
+                    <a href="{{ route('post.delete', $post->id) }}" class="btn btn-danger">削除</a>
+                    </div>
+                </div>               
+            @endforeach
         </div>
+       
+                    
+            
+                
+            
+        
     </div>
 @endsection

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>todo新規作成</h2>
+                <h2>つぶやき新規作成</h2>
 
                 <form action="{{ action('Admin\PostController@create') }}" method="post" enctype="multipart/form-data">
 
@@ -17,7 +17,7 @@
                         </ul>
                     @endif
                     <div class="form-group row">
-                        <label class="col-md-2" for="body">タイトル</label>
+                        <label class="col-md-2" for="body">本文</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="body" value="{{ old('body') }}">
                         </div>

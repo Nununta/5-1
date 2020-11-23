@@ -44,14 +44,14 @@ class PostController extends Controller
         return view('post.index', ['posts' => $posts, 'cond_title' => $cond_title]);
         }
 
-        public function edit(Request $request)
+        public function edit($id)
         {
             // Todo Modelからデータを取得する
-            $posts = Post::find($request->id);
+            $posts = Post::find($id);
             if (empty($posts)) {
               abort(404);    
             }
-            return view('post.edit', ['post_form' => $posts]);
+            return view('post.edit', compact('posts'));
         }
 
     public function update(Request $request)
@@ -73,10 +73,10 @@ class PostController extends Controller
 
     }
 
-    public function delete(Request $request)
+    public function delete($id)
   {
       // 該当するTodo Modelを取得
-      $posts = Post::find($request->id);
+      $posts = Post::find($id);
       // 削除する
       $posts->delete();
       return redirect('post');
