@@ -36,7 +36,11 @@
                     @if( $post->user_id === Auth::id())
                     <div>
                     <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary">編集</a>
-                    <a href="{{ route('post.delete', $post->id) }}" class="btn btn-danger">削除</a>
+                    <form action="{{ route('post.delete', $post->id) }}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <input type="submit" value="削除" class="btn btn-danger" onclick= 'return confirm("削除しますか?");'>
+                    </form>
                     </div>
                     @endif
                 </div>               

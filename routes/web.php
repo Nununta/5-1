@@ -25,5 +25,5 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('post', 'Admin\PostController@index');
     Route::get('post/edit/{id}', 'Admin\PostController@edit')->name('post.edit'); // 追記
     Route::PATCH('post/edit', 'Admin\PostController@update')->name('post.update'); // 追記
-    Route::get('post/delete/{id}', 'Admin\PostController@delete')->name('post.delete');
+    Route::DELETE('post/delete/{id}', 'Admin\PostController@delete')->name('post.delete');
 });
