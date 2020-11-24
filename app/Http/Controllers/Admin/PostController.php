@@ -56,7 +56,7 @@ class PostController extends Controller
     {
       // Validationをかける
       $this->validate($request, Post::$rules);
-      // Todo Modelからデータを取得する
+      // Todo Modelからデータを取得
       $post = Post::find($request->get('id'));
       // 送信されてきたフォームデータを格納する
       $post_form = $request->all();
