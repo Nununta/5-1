@@ -33,10 +33,12 @@
                     <h5 class="card-title">ユーザ名</h5>
                     <h5 class="carg-title">{{ $post->created_at }}</h5>
                     <p class="card-text">{{ $post->body }}</p>
+                    @if( $post->user_id === Auth::id())
                     <div>
                     <a href="{{ route('post.edit', $post->id) }}" class="btn btn-primary">編集</a>
                     <a href="{{ route('post.delete', $post->id) }}" class="btn btn-danger">削除</a>
                     </div>
+                    @endif
                 </div>               
             @endforeach
         </div>

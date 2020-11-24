@@ -48,6 +48,10 @@ class PostController extends Controller
         {
             // Todo Modelからデータを取得する
             $posts = Post::find($id);
+            if( Auth::id() !== $posts->user_id ){
+                return abort(404);
+            }
+
             if (empty($posts)) {
               abort(404);    
             }
@@ -60,6 +64,11 @@ class PostController extends Controller
       $this->validate($request, Post::$rules);
       // Todo Modelからデータを取得する
       $post = Post::find($request->get('id'));
+
+      if( Auth::id() !== $post->user_id ){
+        return abort(404);
+    }
+      
       // 送信されてきたフォームデータを格納する
       $post_form = $request->all();
   
@@ -77,6 +86,9 @@ class PostController extends Controller
   {
       // 該当するTodo Modelを取得
       $posts = Post::find($id);
+      if( Auth::id() !== $posts->user_id ){
+          return abort(404);
+      }
       // 削除する
       $posts->delete();
       return redirect('post');
