@@ -29,7 +29,7 @@
             </div>
             @foreach($posts as $post)
             <div class="card card-body bg-light w-75 mx-auto my-1 shadow">
-                <h5 class="card-title">ユーザ名</h5>
+                <h5 class="card-title">{{ $post->user->name }}</h5>
                 <h5 class="carg-title">{{ $post->created_at }}</h5>
                 <p class="card-text">{{ $post->body }}</p>
                 @if( $post->user_id === Auth::id())

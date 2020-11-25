@@ -38,7 +38,8 @@ class PostController extends Controller
             $posts = Post::where('body', $cond_title)->get();
         } else {
             // それ以外はすべて取得する
-            $posts = Post::all();
+            $posts = Post::all()
+            ->sortByDesc("created_at"); 
         }
      
         return view('post.index', ['posts' => $posts, 'cond_title' => $cond_title]);
