@@ -186,3 +186,7 @@ body {
     float: left;
     margin: 0 5px;
   }
+
+  .shadow{
+      box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
