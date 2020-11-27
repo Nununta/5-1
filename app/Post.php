@@ -12,7 +12,7 @@ class Post extends Model
     protected $dates = ['deleted_at'];
 
     public static $rules = array(
-        'body' => 'required',
+        'body' => 'required|max:255',
         'created_at' => 'date',
         'updated_at' => 'date',
     );
